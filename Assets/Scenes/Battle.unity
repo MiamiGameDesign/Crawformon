@@ -636,7 +636,6 @@ GameObject:
   - component: {fileID: 1290832313}
   - component: {fileID: 1290832312}
   - component: {fileID: 1290832311}
-  - component: {fileID: 1290832310}
   m_Layer: 5
   m_Name: WhatWillYouDo?
   m_TagString: Untagged
@@ -664,20 +663,6 @@ RectTransform:
   m_AnchoredPosition: {x: -855, y: -341}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1290832310
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1290832308}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c469779ff86d4cf44bf2df5c6b2f620f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  textBox: {fileID: 0}
-  playerName: 
 --- !u!114 &1290832311
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -690,8 +675,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c469779ff86d4cf44bf2df5c6b2f620f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textBox: {fileID: 0}
-  playerName: 
+  textBox: {fileID: 1290832308}
 --- !u!114 &1290832312
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -714,7 +698,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 27
+    m_FontSize: 69
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -722,8 +706,8 @@ MonoBehaviour:
     m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: New Text
 --- !u!222 &1290832313

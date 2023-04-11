@@ -9,7 +9,7 @@ public class Submit : MonoBehaviour
     public Text playerName;
     // Start is called before the first frame update
     string name;
-    public void onSubmit()
+    public void SelectButton()
     {
         name = playerName.text;
         PlayerPrefs.SetString("Name", name);
