@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 56101174}
   - component: {fileID: 56101173}
   m_Layer: 5
-  m_Name: Cavnas
+  m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -780,7 +780,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: New Text
+  m_Text: 
 --- !u!222 &995602606
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -887,6 +887,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   whatWillYouDo: {fileID: 1290832308}
   bossHealth: {fileID: 208284444}
+  youWinB: {fileID: 1982602751}
+  youwinT: {fileID: 1960583372}
 --- !u!114 &1290832312
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1303,7 +1305,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &1924868480
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1388,7 +1390,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1960583373
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1442,7 +1444,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: YOU WIN!
+  m_Text: 
 --- !u!222 &1960583375
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1463,12 +1465,12 @@ GameObject:
   - component: {fileID: 1982602752}
   - component: {fileID: 1982602751}
   m_Layer: 5
-  m_Name: YouWin
+  m_Name: YouWinBackground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1982602750
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1496,7 +1498,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1982602749}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 

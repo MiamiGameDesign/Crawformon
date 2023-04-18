@@ -8,6 +8,8 @@ public class AllTextOnScreen : MonoBehaviour
 {
     public GameObject whatWillYouDo;
     public GameObject bossHealth;
+    public Image youWinB;
+    public GameObject youwinT;
     static public double currHealth = 100;
     static public double maxHealth = 100;
     
@@ -21,5 +23,10 @@ public class AllTextOnScreen : MonoBehaviour
     void Update()
     {
         bossHealth.GetComponent<Text>().text = "Crawford's Health: " + currHealth + "/" + maxHealth;
+        if (currHealth <=0)
+        {
+            youWinB.enabled = true;
+            youwinT.GetComponent<Text>().text = "YOU WIN!!!! :D";
+        }
     }
 }

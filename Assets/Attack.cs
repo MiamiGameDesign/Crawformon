@@ -15,6 +15,7 @@ public class Attack : MonoBehaviour
         "Kraw Daddy Used Expel"
     };
     //give player a certain amount of seconds to push a key
+    //make battle start be greg crawford just saying his name really slowly
     public void OnPress()
     {
         GameObject.FindWithTag("KrawDaddy").GetComponent<Text>().text = krawdaddyText[Random.Range(0, krawdaddyText.Length)];
