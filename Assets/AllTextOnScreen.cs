@@ -26,6 +26,9 @@ public class AllTextOnScreen : MonoBehaviour
     {
         bossHealth.GetComponent<Text>().text = "Crawford's Health: " + currHealth + "/" + maxHealth;
         playerHealth.GetComponent<Text>().text = "Player's Health: " + currPHealth + "/" + maxHealth;
+        if (currPHealth >= 100) {
+            currPHealth = 100;
+        }
         if (currHealth <=0)
         {
             youWinB.enabled = true;
