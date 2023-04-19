@@ -9,8 +9,10 @@ public class inventory : MonoBehaviour
     public Image KrawDaddy;
     public GameObject button;
     public GameObject close;
+    public AudioSource sound;
     public void OnPress()
     {
+        sound.Play();
         KrawDaddy.enabled = true;
         button.SetActive(true);
         close.SetActive(true);

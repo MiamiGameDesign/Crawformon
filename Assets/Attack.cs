@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class Attack : MonoBehaviour
 {
-    public GameObject KrawDaddy;
     string[] krawdaddyText =
      {
         "Kraw Daddy Used Slash",

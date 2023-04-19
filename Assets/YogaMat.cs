@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class YogaMat : MonoBehaviour
 {
-    // Update is called once per frame
-     public void OnPress()
+    public AudioSource sound;
+    public void OnPress()
     {
+        sound.Play();
         AllTextOnScreen.currPHealth += 20;
     }
 }
