@@ -39,5 +39,7 @@ public class AllTextOnScreen : MonoBehaviour
             youWinB.enabled = true;
             youwinT.GetComponent<Text>().text = "YOU Lose!!!! D:";
         }
+        if (Input.GetKey(KeyCode.Escape))
+            Application.Quit();
     }
 }
