@@ -8,11 +8,13 @@ public class Close : MonoBehaviour
     public GameObject button;
     public GameObject close;
     public AudioSource sound;
+    public GameObject healsLeft;
     public void OnPress()
     {
         sound.Play();
         KrawDaddy.enabled = false;
         button.SetActive(false);
         close.SetActive(false);
+        healsLeft.SetActive(false);
     }
 }

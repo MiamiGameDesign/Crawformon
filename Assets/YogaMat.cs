@@ -5,9 +5,17 @@ using UnityEngine;
 public class YogaMat : MonoBehaviour
 {
     public AudioSource sound;
+    public GameObject healsLeft;
+    public static int numLeft = 3;
     public void OnPress()
     {
-        sound.Play();
-        AllTextOnScreen.currPHealth += 20;
+        if (numLeft > 0)
+        {
+            sound.Play();
+            AllTextOnScreen.currPHealth += 20;
+            numLeft--;
+            
+        }
+        
     }
 }
