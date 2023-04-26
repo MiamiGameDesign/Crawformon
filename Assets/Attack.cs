@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class Attack : MonoBehaviour
 {
     public GameObject prompt;
+    public Button attackButton;
+    public Button inventoryButton;
     private char randomLetter;
     private float timeLimit = 1.0f;
     private float startTime;
@@ -32,6 +34,7 @@ public class Attack : MonoBehaviour
     public AudioSource missed;
     public void OnPress()
     {
+        StartTimer();
         index = (int)Random.Range(0, alpha.Length);
         randomLetter = alpha[index];
         press.Play();
@@ -39,8 +42,21 @@ public class Attack : MonoBehaviour
         prompt.GetComponent<Text>().text = "Press " + randomLetter + " in order to hurt Kraw Daddy!";
         startTime = Time.time;
         StartCoroutine(WaitForKeyPress());
+        
+        
     }
-
+    public void StartTimer() //Call this from OnClick
+    {
+        StartCoroutine(TimeoutEndTurnButton());
+    }
+    IEnumerator TimeoutEndTurnButton()
+    {
+        attackButton.interactable = false;
+        inventoryButton.interactable = false;
+        yield return new WaitForSeconds(4f);
+        inventoryButton.interactable = true;
+        attackButton.interactable = true;
+    }
     private IEnumerator WaitForKeyPress()
     {
         while (Time.time < startTime + timeLimit)

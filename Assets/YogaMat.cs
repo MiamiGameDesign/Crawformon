@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class YogaMat : MonoBehaviour
 {
@@ -17,5 +18,13 @@ public class YogaMat : MonoBehaviour
             
         }
         
+    }
+    public void onHover() {
+        healsLeft.SetActive(true);
+        healsLeft.GetComponent<Text>().text = "Heals the player 20 health. Yoga Mats Left: " + YogaMat.numLeft;
+    }
+    public void onExit()
+    {
+        healsLeft.SetActive(false);
     }
 }

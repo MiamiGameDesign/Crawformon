@@ -567,6 +567,7 @@ GameObject:
   - component: {fileID: 621620091}
   - component: {fileID: 621620090}
   - component: {fileID: 621620089}
+  - component: {fileID: 621620092}
   m_Layer: 5
   m_Name: Yoga Mat
   m_TagString: Untagged
@@ -689,6 +690,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 621620087}
   m_CullTransparentMesh: 1
+--- !u!114 &621620092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 621620087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1393288913}
+          m_TargetAssemblyTypeName: YogaMat, Assembly-CSharp
+          m_MethodName: onHover
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1393288913}
+          m_TargetAssemblyTypeName: YogaMat, Assembly-CSharp
+          m_MethodName: onExit
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &629326427
 GameObject:
   m_ObjectHideFlags: 0
@@ -1267,7 +1313,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 8c0cfc26579dcdc42a23106e7c3b2deb, type: 3}
+  m_audioClip: {fileID: 8300000, guid: cdd8e2f8f45c99e4eaa4381da8d461d5, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -1846,6 +1892,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prompt: {fileID: 446788485}
+  attackButton: {fileID: 1658091974}
+  inventoryButton: {fileID: 629326429}
   attackSound: {fileID: 1160870880}
   press: {fileID: 743373955}
   missed: {fileID: 812309965}
@@ -1920,7 +1968,6 @@ MonoBehaviour:
   bossHealth: {fileID: 208284444}
   youWinB: {fileID: 1982602751}
   youwinT: {fileID: 1960583372}
-  healsLeft: {fileID: 1629096592}
 --- !u!114 &1290832312
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2174,7 +2221,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -420}
+  m_AnchoredPosition: {x: 259, y: -420}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1394269231
@@ -2378,7 +2425,7 @@ RectTransform:
   m_GameObject: {fileID: 1629096592}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.75, y: 0.75, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 56101176}
@@ -2386,7 +2433,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -369, y: -420}
+  m_AnchoredPosition: {x: -489, y: -420}
   m_SizeDelta: {x: 600, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1629096594
@@ -2419,10 +2466,12 @@ MonoBehaviour:
     m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: New Text
+  m_Text: 'Heals the player 20 health.
+
+    Num left: 3'
 --- !u!222 &1629096595
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2560,10 +2609,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bae81a70d6629904598d3a1a7505253d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prompt: {fileID: 0}
-  attackSound: {fileID: 0}
-  press: {fileID: 0}
-  missed: {fileID: 0}
+  prompt: {fileID: 446788485}
+  attackButton: {fileID: 1658091974}
+  inventoryButton: {fileID: 629326429}
+  attackSound: {fileID: 1160870880}
+  press: {fileID: 743373955}
+  missed: {fileID: 812309965}
 --- !u!114 &1658091974
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -14,10 +14,10 @@ public class inventory : MonoBehaviour
 
     public void OnPress()
     {
+
         sound.Play();
         KrawDaddy.enabled = true;
         button.SetActive(true);
         close.SetActive(true);
-        healsLeft.SetActive(true);
     }
 }

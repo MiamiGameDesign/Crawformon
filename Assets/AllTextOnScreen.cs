@@ -14,7 +14,7 @@ public class AllTextOnScreen : MonoBehaviour
     static public double currHealth = 100;
     static public double currPHealth = 100;
     static public double maxHealth = 100;
-    public GameObject healsLeft;
+    public static GameObject healsLeft;
     public static string name;
 
     // Start is called before the first frame update
@@ -30,9 +30,9 @@ public class AllTextOnScreen : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        bossHealth.GetComponent<Text>().text = "Crawford's Health: " + currHealth + "/" + maxHealth;
+        bossHealth.GetComponent<Text>().text = "Kraw Daddy's Health: " + currHealth + "/" + maxHealth;
         playerHealth.GetComponent<Text>().text = "Player's Health: " + currPHealth + "/" + maxHealth;
-        healsLeft.GetComponent<Text>().text = "Yoga Mats Left: " + YogaMat.numLeft;
+        
         if (currPHealth >= 100) {
             currPHealth = 100;
         }
@@ -41,14 +41,22 @@ public class AllTextOnScreen : MonoBehaviour
             youWinB.enabled = true;
             youwinT.GetComponent<Text>().text = "YOU WIN!!!! :D";
             Time.timeScale = 0;
+            StartCoroutine(crash());
         }
         if (currPHealth <=0)
         {
             youWinB.enabled = true;
             youwinT.GetComponent<Text>().text = "YOU LOSE!!!! D:";
             Time.timeScale = 0;
+            StartCoroutine(crash());
         }
         if (Input.GetKey(KeyCode.Escape))
             Application.Quit();
     }
+    IEnumerator crash()
+    {
+        yield return new WaitForSeconds(5);
+        Application.Quit();
+    }
+
 }
