@@ -10,7 +10,7 @@ public class YogaMat : MonoBehaviour
     public static int numLeft = 3;
     public void OnPress()
     {
-        if (numLeft > 0)
+        if (numLeft > 0 && AllTextOnScreen.currPHealth < 100)
         {
             sound.Play();
             AllTextOnScreen.currPHealth += 20;

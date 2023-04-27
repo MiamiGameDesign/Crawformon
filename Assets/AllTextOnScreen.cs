@@ -41,20 +41,33 @@ public class AllTextOnScreen : MonoBehaviour
         {
             youWinB.enabled = true;
             youwinT.GetComponent<Text>().text = "YOU WIN!!!! :D";
-            Time.timeScale = 0;
+            currPHealth = 100;
+            currHealth = 100;
+            YogaMat.numLeft = 3;
             StartCoroutine(crash());
         }
         if (currPHealth <=0)
         {
             youWinB.enabled = true;
             youwinT.GetComponent<Text>().text = "YOU LOSE!!!! D:";
-            Time.timeScale = 0;
+            currHealth = 100;
+            currPHealth = 100;
+            YogaMat.numLeft = 3;
             StartCoroutine(crash());
         }
         if (Input.GetKey(KeyCode.Escape))
             Application.Quit();
         if (Input.GetKey(KeyCode.Return))
+        {
+            currHealth = 100;
+            currPHealth = 100;
+            YogaMat.numLeft = 3;
+            Destroy(youWinB);
+            Destroy(youwinT);
+            SceneManager.LoadScene("Battle");
             SceneManager.LoadScene("Main Menu");
+        }
+            
     }
     IEnumerator crash()
     {

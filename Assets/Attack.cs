@@ -9,7 +9,7 @@ public class Attack : MonoBehaviour
     public Button attackButton;
     public Button inventoryButton;
     private char randomLetter;
-    private float timeLimit = 1.0f;
+    private float timeLimit = 2.0f;
     private float startTime;
     private int damage;
     int index;
@@ -53,7 +53,7 @@ public class Attack : MonoBehaviour
     {
         attackButton.interactable = false;
         inventoryButton.interactable = false;
-        yield return new WaitForSeconds(4f);
+        yield return new WaitForSeconds(4.75f);
         inventoryButton.interactable = true;
         attackButton.interactable = true;
     }
@@ -74,7 +74,7 @@ public class Attack : MonoBehaviour
                     GameObject.FindWithTag("KrawDaddy").GetComponent<Text>().text = krawdaddyText[Random.Range(0, krawdaddyText.Length)];
                     if (AllTextOnScreen.currPHealth > 0)
                     {
-                        damage = (int)Random.Range(0, 15);
+                        damage = (int)Random.Range(0, 12);
                         AllTextOnScreen.currPHealth -= damage;
                         if (damage == 0)
                         {
@@ -106,7 +106,7 @@ public class Attack : MonoBehaviour
                     GameObject.FindWithTag("KrawDaddy").GetComponent<Text>().text = krawdaddyText[Random.Range(0, krawdaddyText.Length)];
                     if (AllTextOnScreen.currPHealth > 0)
                     {
-                        damage = (int)Random.Range(0, 15);
+                        damage = (int)Random.Range(0, 12);
                         AllTextOnScreen.currPHealth -= damage;
                         if (damage == 0)
                         {
