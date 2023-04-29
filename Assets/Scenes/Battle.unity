@@ -2687,8 +2687,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prompt: {fileID: 446788485}
-  attackButton: {fileID: 1658091974}
-  inventoryButton: {fileID: 629326429}
+  attackButton: {fileID: 0}
+  inventoryButton: {fileID: 0}
   attackSound: {fileID: 1160870880}
   press: {fileID: 743373955}
   missed: {fileID: 812309965}

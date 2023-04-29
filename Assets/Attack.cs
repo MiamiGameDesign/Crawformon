@@ -6,11 +6,10 @@ using UnityEngine.UI;
 public class Attack : MonoBehaviour
 {
     public GameObject prompt;
-    public Button attackButton;
-    public Button inventoryButton;
+    public Button attackButton, inventoryButton;
     private char randomLetter;
     private float timeLimit = 2.0f;
-    private float startTime;
+    private float startTime, random;
     private int damage;
     int index;
     char[] alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".ToCharArray();
@@ -34,30 +33,37 @@ public class Attack : MonoBehaviour
     public AudioSource missed;
     public void OnPress()
     {
-        StartTimer();
+        StartTimer(4.75f);
         index = (int)Random.Range(0, alpha.Length);
         randomLetter = alpha[index];
         press.Play();
         prompt.SetActive(true);
-        prompt.GetComponent<Text>().text = "Press " + randomLetter + " in order to hurt Kraw Daddy!";
+        prompt.GetComponent<Text>().text = "Press " + randomLetter + " to hurt Kraw Daddy!";
         startTime = Time.time;
-        StartCoroutine(WaitForKeyPress());
+        StartCoroutine(WaitForKeyPress(4.75f));
         
         
     }
-    public void StartTimer() //Call this from OnClick
+    public void StartTimer(float turnTime)
     {
-        StartCoroutine(TimeoutEndTurnButton());
+        StartCoroutine(TimeoutEndTurnButton(turnTime));
+        if (turnTime == 2)
+        {
+            prompt.SetActive(true);
+            prompt.GetComponent<Text>().text = "";
+            StartCoroutine(KrawDaddyAttack(turnTime));
+        }
+            
     }
-    IEnumerator TimeoutEndTurnButton()
+    public IEnumerator TimeoutEndTurnButton(float turnTime)
     {
         attackButton.interactable = false;
         inventoryButton.interactable = false;
-        yield return new WaitForSeconds(4.75f);
+        yield return new WaitForSeconds(turnTime);
         inventoryButton.interactable = true;
         attackButton.interactable = true;
     }
-    private IEnumerator WaitForKeyPress()
+    private IEnumerator WaitForKeyPress(float turnTime)
     {
         while (Time.time < startTime + timeLimit)
         {
@@ -71,61 +77,15 @@ public class Attack : MonoBehaviour
                     prompt.GetComponent<Text>().text = "Hit! You dealt " + damage + " damage to Kraw Daddy!";
                     AllTextOnScreen.currHealth -= damage;
                     yield return new WaitForSeconds((float)1.5);
-                    GameObject.FindWithTag("KrawDaddy").GetComponent<Text>().text = krawdaddyText[Random.Range(0, krawdaddyText.Length)];
-                    if (AllTextOnScreen.currPHealth > 0)
-                    {
-                        damage = (int)Random.Range(0, 12);
-                        AllTextOnScreen.currPHealth -= damage;
-                        if (damage == 0)
-                        {
-                            missed.Play();
-                            prompt.GetComponent<Text>().text = "Kraw Daddy missed!";
-                            yield return new WaitForSeconds((float)1.5);
-                            prompt.SetActive(false);
-                            GameObject.FindWithTag("KrawDaddy").GetComponent<Text>().text = "";
-                        }
-                            
-                        else
-                        {
-                            attackSound.Play();
-                            prompt.GetComponent<Text>().text = "Hit! Kraw Daddy dealt " + damage + " damage!";
-                            yield return new WaitForSeconds((float)1.5);
-                            prompt.SetActive(false);
-                            GameObject.FindWithTag("KrawDaddy").GetComponent<Text>().text = "";
-                        }
-                            
-                    }
-                        
-
+                    
+                    StartCoroutine(KrawDaddyAttack(turnTime));
                 }
                 else
                 {
                     missed.Play();
                     prompt.GetComponent<Text>().text = "You Missed!";
                     yield return new WaitForSeconds((float)1.5);
-                    GameObject.FindWithTag("KrawDaddy").GetComponent<Text>().text = krawdaddyText[Random.Range(0, krawdaddyText.Length)];
-                    if (AllTextOnScreen.currPHealth > 0)
-                    {
-                        damage = (int)Random.Range(0, 12);
-                        AllTextOnScreen.currPHealth -= damage;
-                        if (damage == 0)
-                        {
-                            missed.Play();
-                            prompt.GetComponent<Text>().text = "Kraw Daddy missed!";
-                            yield return new WaitForSeconds((float)1.5);
-                            prompt.SetActive(false);
-                            GameObject.FindWithTag("KrawDaddy").GetComponent<Text>().text = "";
-                        }
-
-                        else
-                        {
-                            attackSound.Play();
-                            prompt.GetComponent<Text>().text = "Hit! Kraw Daddy dealt " + damage + " damage!";
-                            yield return new WaitForSeconds((float)1.5);
-                            prompt.SetActive(false);
-                            GameObject.FindWithTag("KrawDaddy").GetComponent<Text>().text = "";
-                        }
-                    }
+                    StartCoroutine(KrawDaddyAttack(turnTime));
                 }
                 yield break;
             }
@@ -134,28 +94,40 @@ public class Attack : MonoBehaviour
         missed.Play();
         prompt.GetComponent<Text>().text = "You Missed!";
         yield return new WaitForSeconds((float)1.5);
+        StartCoroutine(KrawDaddyAttack(turnTime));
+    }
+
+    public IEnumerator KrawDaddyAttack(float turnTime)
+    {
+        if (turnTime == 2)
+            yield return new WaitForSeconds(.75f);
         GameObject.FindWithTag("KrawDaddy").GetComponent<Text>().text = krawdaddyText[Random.Range(0, krawdaddyText.Length)];
         if (AllTextOnScreen.currPHealth > 0)
         {
-            damage = (int)Random.Range(0, 15);
+            if (Random.value < .15)
+            {
+                damage = 0;
+            } else
+            {
+                damage = (int)Random.Range(0, 16);
+            }
+            
             AllTextOnScreen.currPHealth -= damage;
             if (damage == 0)
             {
                 missed.Play();
                 prompt.GetComponent<Text>().text = "Kraw Daddy missed!";
                 yield return new WaitForSeconds((float)1.5);
-                prompt.SetActive(false);
-                GameObject.FindWithTag("KrawDaddy").GetComponent<Text>().text = "";
             }
-
             else
             {
                 attackSound.Play();
                 prompt.GetComponent<Text>().text = "Hit! Kraw Daddy dealt " + damage + " damage!";
                 yield return new WaitForSeconds((float)1.5);
-                prompt.SetActive(false);
-                GameObject.FindWithTag("KrawDaddy").GetComponent<Text>().text = "";
             }
+            prompt.SetActive(false);
+            GameObject.FindWithTag("KrawDaddy").GetComponent<Text>().text = "";
         }
     }
+
 }
