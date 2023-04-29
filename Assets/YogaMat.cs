@@ -32,7 +32,7 @@ public class YogaMat : MonoBehaviour
     }
     public void onHover() {
         healsLeft.SetActive(true);
-        healsLeft.GetComponent<Text>().text = "Heals the player 20 health. Yoga Mats Left: " + YogaMat.numLeft;
+        healsLeft.GetComponent<Text>().text = "Heals the player 20 health. Yoga Mats left: " + YogaMat.numLeft;
     }
     public void onExit()
     {
